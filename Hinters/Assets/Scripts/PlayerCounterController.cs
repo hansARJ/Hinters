@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerCounterController : MonoBehaviour
 {
-  // public TextMestProUGUI
+  public Slider slider;
+  public TextMeshProUGUI title;
+
   // Start is called before the first frame update
   void Start()
   {
+    title.text = slider.minValue.ToString();
+    slider.onValueChanged.AddListener(delegate { UpdatePlayerCount(); });
   }
 
-  // Update is called once per frame
-  void Update()
+  public void UpdatePlayerCount()
   {
-    Debug.Log("BEFORE BLAH");
-    Debug.Log("BLAH");
+    title.text = slider.value.ToString();
   }
 }

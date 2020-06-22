@@ -15,7 +15,7 @@ public class Navigator : MonoBehaviour
     AsyncOperation op = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
     while (!op.isDone)
     {
-      Debug.Log($"Loading scene: {sceneName}");
+      Debug.Log($"Navigator: Pushing scene - {sceneName}");
       yield return 0;
     }
 
@@ -25,6 +25,7 @@ public class Navigator : MonoBehaviour
     var canvas = GetSceneCanvas(scene);
     canvas.worldCamera = mainCamera;
     canvas.sortingOrder = NextSortLayer();
+    Debug.Log($"Navigator: Successfully pushed scene - {sceneName}");
   }
 
   private int NextSortLayer()

@@ -4,17 +4,13 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NavigationSceneController : MonoBehaviour
+public class Navigator : MonoBehaviour
 {
   public Camera mainCamera;
   private List<Scene> scenes = new List<Scene>();
   // Start is called before the first frame update
-  void Start()
-  {
-    StartCoroutine(PushScene("SelectNumberOfPlayers"));
-  }
 
-  IEnumerator PushScene(string sceneName)
+  public IEnumerator PushScene(string sceneName)
   {
     AsyncOperation op = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
     while (!op.isDone)
